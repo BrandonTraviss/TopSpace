@@ -16,6 +16,7 @@ window.addEventListener('keydown', (e) => {
         player.setPos(canvas.width / 2 - player.width, canvas.height - player.height)
         game.enemyBullets = []
         player.bullets = []
+        game.score = 0
     }
 })
 
