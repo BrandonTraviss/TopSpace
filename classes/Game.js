@@ -3,7 +3,7 @@ export default class Game {
         this.ctx = ctx;
         this.canvas = canvas;
         this.enemies = [];
-        this.state = 'playing'; // Initial state
+        this.state = 'menu'; // Initial state
         this.enemyBullets = []
         this.score = 0
     }
@@ -23,6 +23,15 @@ export default class Game {
         });
     }
     update() {
+        if (this.state === 'menu') {
+            this.background.update();
+            this.ctx.fillStyle = 'white'
+            this.ctx.font = "20px serif";
+            this.ctx.fillText("Press Enter...", this.canvas.width / 2 - 40, this.canvas.height / 2 + 20);
+            this.ctx.font = "48px serif";
+            this.ctx.fillText("Start Game", this.canvas.width / 2 - 100, this.canvas.height / 2);
+        }
+
         if (this.state === 'playing') {
             this.background.update();
 
@@ -44,10 +53,12 @@ export default class Game {
             this.background.update();
             this.ctx.fillStyle = 'white'
             this.ctx.font = "48px serif";
-            this.ctx.fillText("Game Over", this.canvas.width / 2 - 114, this.canvas.height / 2);
+            this.ctx.fillText("Game Over", this.canvas.width / 2 - 110, this.canvas.height / 2);
+            this.ctx.font = "20px serif";
+            this.ctx.fillText("Press Enter...", this.canvas.width / 2 - 50, this.canvas.height / 2 + 30);
             this.ctx.fillStyle = 'white'
             this.ctx.font = "48px serif";
-            this.ctx.fillText(`Score ${this.score}`, this.canvas.width / 2 - 114, this.canvas.height / 2 + 50);
+            this.ctx.fillText(`Score ${this.score}`, this.canvas.width / 2 - 110, this.canvas.height / 2 - 100);
         }
     }
 

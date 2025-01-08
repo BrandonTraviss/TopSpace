@@ -5,6 +5,20 @@ import Player from "./classes/Player.js"
 import getRandomNumber from "./functions/getRandomNumber.js"
 import loadImage from "./functions/loadImage.js"
 
+window.addEventListener('keydown', (e) => {
+    console.log(e)
+    if (e.key === 'Enter' && game.state === 'menu' || e.key === 'Enter' && game.state === 'gameover') {
+        console.log('Playing')
+        game.state = 'playing'
+        console.log(game.state)
+        player.health = 4
+        game.enemies = []
+        player.setPos(canvas.width / 2 - player.width, canvas.height - player.height)
+        game.enemyBullets = []
+        player.bullets = []
+    }
+})
+
 const canvas = document.getElementById('game-screen')
 const ctx = canvas.getContext('2d')
 
